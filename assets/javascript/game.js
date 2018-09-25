@@ -1,59 +1,126 @@
-//Create array of game-themed words
-var words = ["sting", "cher", "bono", "eazy-e", "diddy", "prince", "donovan", "jewel"];
-// var words = ["prince"];
+//GLOBAL VARIABLES
+//Array of words that user will try to guess letter by letter
+var words = ["tron", "brazil", "terminator", "metropolis", "godzilla", "arrival", "frankenstein", "solaris", "alien", "robocop", "akira", "predator", "gattaca", "primer", "inception", "looper", "existenz", "alphaville", "snowpiercer", "contact", "her"];
 
-//hooks variables into document elements
-var wordDisplay = document.getElementById("word-display");
-var lettersDisplay = document.getElementById("letters-display");
-var guessesRemaining = document.getElementById("guesses-remaining");
-var winCount = document.getElementById("win-count");
+//INITIALIZE GAME SETTINGS
+//Array to hold letters guessed
+var lettersGuessed = [];
+//The game starts with a score of 0
+var winCount = 0;
+//Variable to hold index of current word
+var wordIndex = 0;
+//Variable to keep track of guesses remaining
+var guessesRemain = 10;
 
-//Randomly chooses from the words array. This is the computer's pick.
-var wordChoice = words[Math.floor(Math.random() * words.length)];
-console.log(wordChoice);
-console.log(wordChoice.length);
+//FUNCTIONS
 
-//Creates blank spaces in wordDisplay for each letter of wordChoice
-for (var i = 0; i < wordChoice.length; i++) {
-    wordDisplay.textContent += "_";
+//Resets guesses variables to initial state, chooses word from array, and displays word as blanks
+function chooseWord() {
+    //resets guesses remaining and list of guessed letters
+    lettersGuessed = [];
+    document.querySelector("#letters-display").innerHTML = "";
+    guessesRemain = 10;
+    updateGuesses();
+    // If there are still more words, choose the next one.
+    if (wordIndex <= (words.length - 1)) {
+        //Creates blank spaces in wordDisplay for each letter of current word
+        document.querySelector("#word-display").innerHTML = "";
+        for (var i = 0; i < words[wordIndex].length; i++) {
+            document.querySelector("#word-display").innerHTML += "_";
+        }
+        console.log(words[wordIndex]);
+    }
+    // If there aren't, render the end game screen.
+    else {
+    document.querySelector("#word-display").innerHTML = "There are no more words to guess!";
+    document.querySelector("#win-count").innerHTML = winCount + " out of " + words.length;
+    }
 }
 
-//When the user hits a key
-document.onkeyup = function(checkKey) {
+//Updates the wins displayed in the browser
+function updateWins() {
+    document.querySelector("#win-count").innerHTML = winCount;
+}
+
+//Updates the letters guessed displayed in the browser
+function updateLetters(guess) {
+        document.querySelector("#letters-display").innerHTML += guess;
+}
+
+//Updates the guesses remaining displayed in the browser
+function updateGuesses() {
+    document.querySelector("#guesses-remaining").innerHTML = guessesRemain;
+}
+
+//Updates word to display correctly guessed letters
+function updateWordDisplay() {
+    document.querySelector("#word-display").innerHTML = "";
+    for (var j = 0; j < words[wordIndex].length; j++) {
+        if (lettersGuessed.indexOf(words[wordIndex][j]) == -1) {
+            document.querySelector("#word-display").innerHTML += "_";
+        }
+        else {
+            document.querySelector("#word-display").innerHTML += words[wordIndex][j];
+        }  
+    }
+}
+
+//MAIN PROCESS
+
+//Calls function to choose first word and begin game
+chooseWord();
+
+//When user presses key, function runs
+document.onkeyup = function(event) {
+
+    // If there are no more words, stop the function.
+    if (wordIndex === words.length) {
+        return;
+    }
+
     //Determines which key is pressed and assigns to variable userKey
-    var userKey = checkKey.key;
-    //If userKey is already in lettersDisplay, alert user
-    if (lettersDisplay.textContent.indexOf(userKey) >= 0) {
+    var userKey = event.key.toLowerCase();
+
+    //If userKey is already in lettersGuessed, alert user
+    if (lettersGuessed.indexOf(userKey) >= 0) {
         alert("You have already guessed that letter! Press enter to continue.")
     }
-    //If userKey letter is not in wordChoice, add the letter to the lettersDisplay object and decrease guessesRemaining by 1
-    else if (wordChoice.indexOf(userKey) === -1) {
-        lettersDisplay.textContent += userKey;
-        guessesRemaining.textContent = (guessesRemaining.textContent - 1);
-    }
-    //If userKey letter is in wordChoice, replace the blanks in wordDisplay with the letter
-    else if (wordChoice.indexOf(userKey) !== -1) {
-        //Add code here to check index of letter, etc.
-        for (var i = 0; i < wordChoice.length; i++) {
-            if (userKey === wordChoice[i]) {
-                console.log(wordChoice[i]);
-                wordDisplay.textContent[i] = userKey;
-            }
-        }
 
-
+    //If userKey letter is not in the current word, update lettersGuessed array and update guessesRemain variable
+    else if (words[wordIndex].indexOf(userKey) == -1) {
+        lettersGuessed.push(userKey);
+        updateLetters(userKey);
+        guessesRemain--;
+        updateGuesses();
     }
+
+    //If userKey letter is in the current word, update lettersGuessed array and replace the blanks in word-display with the correct letter
+    else {
+        lettersGuessed.push(userKey);
+        updateWordDisplay();
+    }
+
+    //If all letters have been guessed correctly, alert win and then restart game with next word
+    if (document.querySelector("#word-display").innerHTML == words[wordIndex]) {
+        updateWordDisplay();
+        winCount++;
+        updateWins();
+        document.querySelector("#word-reveal").innerHTML = "Correct! The movie was:  " + words[wordIndex];
+        wordIndex++;
+        chooseWord();
+    }
+
+    //If user runs out of guesses, alert loss and then restart game with next word
+    if (guessesRemain == 0) {
+        document.querySelector("#word-reveal").innerHTML = "Sorry! The movie was:  " + words[wordIndex];
+        wordIndex++;
+        chooseWord();
+    }
+
     
 
 };
 
-//If guessesRemaining reaches 0, the game ends
-if (guessesRemaining.textContent === 0) {
-    alert("Game Over - You Lost!");
-}
-//If all letters of the word are guessed correctly, the game ends
-if (wordDisplay.textContent === wordChoice) {
-    winCount.textContent = (winCount.textContent + 1);
-    alert("You Guessed the Word - You Win!");
-}
+
+
 

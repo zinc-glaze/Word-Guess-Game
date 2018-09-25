@@ -4,26 +4,30 @@
     <meta charset="utf-8" />
     <title>Word Guess Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css" /> -->
+    <link href="https://fonts.googleapis.com/css?family=Baloo|Baloo+Da|Chango|Geostar|Geostar+Fill|Modak|Revalia" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 </head>
 <body>
     <header>
-        <h1>Hangman</h1>
-        <h2>Pop Stars with One-Word Names</h2>
+        <h2>Classic Sci-Fi Movies</h2>
+        <h1>WORD GUESS</h1>
     </header>   
-    <br />
-    <p>Press a key to get started!</p>
+    <main>
+    <p>Press a letter key to get started!</p>
     <br />
     <p>WINS: <span id="win-count">0</span></p>
     <br />
     <p>Current Word:</p>
-    <h3><span id="word-display"></span></h3>
+    <p><span id="word-display"></span></p>
     <br />
-    <p>Number of guesses remaining: <span id="guesses-remaining">11</span></p>
+    <p>Number of guesses remaining: <span id="guesses-remaining">10</span></p>
     <br />
     <p>Letters already Guessed:</p>
     <p><span id="letters-display"></span></p>
+    <br />
+    <p><span id="word-reveal">?????</span></p>
+    </main>
 
     <!-- Link to Javascript -->
     <script src="assets/javascript/game.js"></script>
