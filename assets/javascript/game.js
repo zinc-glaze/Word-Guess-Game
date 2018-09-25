@@ -81,9 +81,9 @@ document.onkeyup = function(event) {
     //Determines which key is pressed and assigns to variable userKey
     var userKey = event.key.toLowerCase();
 
-    //If userKey is already in lettersGuessed, alert user
+    //If userKey is already in lettersGuessed, ignore key press
     if (lettersGuessed.indexOf(userKey) >= 0) {
-        alert("You have already guessed that letter! Press enter to continue.")
+        return;
     }
 
     //If userKey letter is not in the current word, update lettersGuessed array and update guessesRemain variable

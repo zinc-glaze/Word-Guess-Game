@@ -9,41 +9,49 @@ font-family: 'Baloo', cursive; */
 body {
     background-image: url("../images/darkness.png");
     font-family: 'Baloo Da', cursive;
-    font-size: 30px;
+    font-size: 35px;
     color: #ffffff;
 }
 
 h1 {
     padding: 10px;
+    font-size: 40px;
+    margin-bottom: 10px;
 }
 
 h2 {
     padding: 10px;
+    font-size: 40px;
+    margin-top: 10px;
+}
+
+p {
+    margin-bottom: 10px;
 }
 
 header {
     text-align: center;
     font-family: 'Revalia', cursive;
     border-bottom: 5px solid #ffffff;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     overflow: auto;
 }
 
 main {
     text-align: center;
     border: 5px solid #ffffff;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 10px;
+    padding: 20px;
     width: 50%;
     margin: auto;
 }
 
 #word-display {
-    font-size: 30px;
+    font-size: 50px;
     letter-spacing: 10px;
 }
 
 #letters-display {
-    font-size: 30px;
+    font-size: 45px;
     letter-spacing: 10px;
 }
