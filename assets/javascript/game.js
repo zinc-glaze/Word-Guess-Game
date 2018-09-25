@@ -1,6 +1,6 @@
 //GLOBAL VARIABLES
 //Array of words that user will try to guess letter by letter
-var words = ["tron", "brazil", "terminator", "metropolis", "godzilla", "arrival", "frankenstein", "solaris", "alien", "robocop", "akira", "predator", "gattaca", "primer", "inception", "looper", "existenz", "alphaville", "snowpiercer", "contact", "her"];
+var words = ["tron", "dune", "brazil", "terminator", "metropolis", "godzilla", "westworld", "arrival", "frankenstein", "solaris", "alien", "robocop", "videodrome", "akira", "predator", "mothra", "gattaca", "primer", "barbarella", "stargate", "inception", "looper", "existenz", "alphaville", "snowpiercer", "contact", "her", "annihilation", "scanners", "zardoz"];
 
 //INITIALIZE GAME SETTINGS
 //Array to hold letters guessed
