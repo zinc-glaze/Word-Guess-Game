@@ -9,19 +9,19 @@ font-family: 'Baloo', cursive; */
 body {
     background-image: url("../images/darkness.png");
     font-family: 'Baloo Da', cursive;
-    font-size: 35px;
+    font-size: 30px;
     color: #ffffff;
 }
 
 h1 {
     padding: 10px;
-    font-size: 40px;
+    font-size: 36px;
     margin-bottom: 10px;
 }
 
 h2 {
     padding: 10px;
-    font-size: 40px;
+    font-size: 36px;
     margin-top: 10px;
 }
 
@@ -47,11 +47,11 @@ main {
 }
 
 #word-display {
-    font-size: 50px;
+    font-size: 45px;
     letter-spacing: 10px;
 }
 
 #letters-display {
-    font-size: 45px;
+    font-size: 40px;
     letter-spacing: 10px;
 }
