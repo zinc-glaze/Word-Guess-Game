@@ -67,6 +67,11 @@ function updateWordDisplay() {
 
 //MAIN PROCESS
 
+//Shuffles words in the array
+words.sort(function() {
+    return 0.5 - Math.random();
+});
+
 //Calls function to choose first word and begin game
 chooseWord();
 
