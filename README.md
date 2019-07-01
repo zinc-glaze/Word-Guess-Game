@@ -5,7 +5,9 @@ This application is a word guess game modelled on the old standard "Hangman." Th
 
 The theme of the words is Sci-Fi Movie Titles (they are all one-word titles in this case.)
 
-This app uses Javascipt for game logic and HTML and CSS for layout and styling.
+This app uses Javascipt for game logic and interactivity and HTML and CSS for layout and styling.
+
+My deployed app can be viewed here: https://zinc-glaze.github.io/Word-Guess-Game/
 
 ### Screenshots
 
